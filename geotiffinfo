@@ -1,0 +1,33 @@
+Geotiff_Information:
+   Version: 1
+   Key_Revision: 1.0
+   Tagged_Information:
+      ModelTiepointTag (2,3):
+         0                 0                 0
+         -5458203.0763469  2729101.53817345  0
+      ModelPixelScaleTag (1,3):
+         100.0000418       100.0000418       0
+      End_Of_Tags.
+   Keyed_Information:
+      GTModelTypeGeoKey (Short,1): ModelTypeProjected
+      GTRasterTypeGeoKey (Short,1): RasterPixelIsArea
+      GTCitationGeoKey (Ascii,21): "Equirectangular Moon"
+      GeographicTypeGeoKey (Short,1): User-Defined
+      GeogCitationGeoKey (Ascii,93): "GCS Name = GCS_Moon|Datum = D_Moon|Ellipsoid = Moon_localRadius|Primem = Reference_Meridian|"
+      GeogGeodeticDatumGeoKey (Short,1): User-Defined
+      GeogAngularUnitsGeoKey (Short,1): Angular_Degree
+      GeogEllipsoidGeoKey (Short,1): User-Defined
+      GeogSemiMajorAxisGeoKey (Double,1): 1737400
+      GeogSemiMinorAxisGeoKey (Double,1): 1737400
+      GeogPrimeMeridianLongGeoKey (Double,1): 0
+      ProjectedCSTypeGeoKey (Short,1): User-Defined
+      ProjectionGeoKey (Short,1): User-Defined
+      ProjCoordTransGeoKey (Short,1): CT_Equirectangular
+      ProjLinearUnitsGeoKey (Short,1): Linear_Meter
+      ProjStdParallel1GeoKey (Double,1): 0
+      ProjFalseEastingGeoKey (Double,1): 0
+      ProjFalseNorthingGeoKey (Double,1): 0
+      ProjCenterLongGeoKey (Double,1): 0
+      ProjCenterLatGeoKey (Double,1): 0
+      End_Of_Keys.
+   End_Of_Geotiff.
