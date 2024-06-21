@@ -4,7 +4,7 @@ convert n*m data to geotiff
 
 compile:
 ```shell
-    gcc gcc dat2geotiff.c -ltiff -lgeotiff -lm -o dat2gtif
+    gcc dat2geotiff.c -ltiff -lgeotiff -lm -o dat2gtif
 ```
 
 usage:
@@ -17,3 +17,4 @@ example:
 ```shell
     dat2gtif -w 1441 -l 721 -o test.tif -i geotiffinfo -d Model1_thick.dat
 ```
+example data Model1_thick is from "https://doi.org/10.1126/science.1231530"
