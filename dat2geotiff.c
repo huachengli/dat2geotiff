@@ -29,8 +29,9 @@ int main(int argc, char* argv[]) {
     uint32_t length = 721;
 
     // parser input
+    int colum_first = 0;
     int c; opterr = 0;
-    while ((c = getopt (argc, argv, "w:l:d:i:o:")) != -1)
+    while ((c = getopt (argc, argv, "w:l:d:i:o:T")) != -1)
     {
         switch(c)
         {
@@ -48,6 +49,9 @@ int main(int argc, char* argv[]) {
                 break;
             case 'o':
                 strncpy(out_name,optarg,1024);
+                break;
+            case 'T':
+                colum_first = 1;
                 break;
             case '?':
                 fprintf (stderr,"Unknown option character `\\x%x'.\n",optopt);
@@ -112,24 +116,43 @@ int main(int argc, char* argv[]) {
     GTIFWriteKeys(out_gtif);
     GTIFFree(out_gtif);
 
+    /// hold data from dat
+    double * databuffer = malloc(width*length*sizeof(double));
+    for(int i=0;i<width*length;i++)
+    {
+        assert(1==fscanf(in,"%lf",databuffer+i));
+    }
+
     tmsize_t scanlinesize = TIFFScanlineSize(out);
     unsigned char *obuf = _TIFFmalloc(scanlinesize);
     int32_t * ibuf = (int32_t *)obuf;
+
+    //read data from dat file
     for(size_t k=0;k<length;++k)
     {
-        //read data from dat file
         for(size_t j=0;j<width;++j)
         {
             double _local_data;
-            fscanf(in,"%lf",&_local_data);
+            // fscanf(in,"%lf",&_local_data);
+            if(colum_first)
+            {
+                _local_data = databuffer[j*length+k];
+            }
+            else
+            {
+                _local_data = databuffer[k*width+j];
+            }
             ibuf[(j+width/2)%width] = (int32_t) round(_local_data*1000.0);
         }
         TIFFWriteScanline(out,obuf,k,0);
     }
+
+
     TIFFWriteDirectory(out); // update IFD in tif
     _TIFFfree(obuf);
     if(NULL != in_geo) XTIFFClose(in_geo);
     fclose(in);
     XTIFFClose(out);
+    free(databuffer);
     return 0;
 }
